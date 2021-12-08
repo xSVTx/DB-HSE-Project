@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import psycopg2
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,12 +76,40 @@ WSGI_APPLICATION = 'bdproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+con = psycopg2.connect(user="postgres",
+                       password="BN59-01012A") # Change password here
+
+con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+
+cur = con.cursor()
+
+cur.execute("select exists(\
+    SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('studhub')\
+    );")
+
+if not cur.fetchone()[0]:
+
+    con.close()
+
+    con = psycopg2.connect(
+        host="localhost",
+        database="studHubCreation",
+        user="postgres",
+        password="BN59-01012A"
+    ) 
+
+    cur = con.cursor()
+
+    cur.execute("select studHubStart();")
+
+con.close()
+
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'studhub',
        'USER': 'postgres',
-       'PASSWORD': 'password',
+       'PASSWORD': 'BN59-01012A',
        'HOST': 'localhost',
        'PORT': '5432',
    }

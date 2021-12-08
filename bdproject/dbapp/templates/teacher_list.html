@@ -1,0 +1,10 @@
+{% block content %}
+
+{{teacher_list}}
+
+{% for teacher in teacher_list %}
+     <p>{{ teacher.teacher_id }} - {{teacher.teachercredentials}}</a></p>
+{% endfor %}
+
+
+{% endblock %}
