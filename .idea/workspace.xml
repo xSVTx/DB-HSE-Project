@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b82ebcd-ac6a-4d87-a1b6-883877d08fde" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdproject/bdproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdproject/bdproject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdproject/dbapp/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/templates/teacher_create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/templates/teacher_delete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/templates/teacher_detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/templates/teacher_list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/templates/teacher_update.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdproject/dbapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdproject/dbapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdproject/dbapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +82,8 @@
       <workItem from="1638796657604" duration="1094000" />
       <workItem from="1638798095094" duration="55000" />
       <workItem from="1638798678229" duration="1074000" />
+      <workItem from="1638958567389" duration="14000" />
+      <workItem from="1639138196675" duration="730000" />
     </task>
     <servers />
   </component>

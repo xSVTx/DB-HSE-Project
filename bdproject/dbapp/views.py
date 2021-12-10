@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from django.views.generic import (
     CreateView,
@@ -28,12 +28,12 @@ def about_view(request, *args, **kwargs):
 
 
 class testListView(ListView):
-    template_name = 'teacher_list.html'
+    template_name = 'teacher/teacher_list.html'
     queryset = Teacher.objects.all()
 
 
 class testDetailView(DetailView):
-    template_name = 'teacher_detail.html'
+    template_name = 'teacher/teacher_detail.html'
     # queryset = Teacher.objects.all()
     def get_object(self):
         id_ = self.kwargs.get("id") # Had to be 'teacher_id', but doesnt work for some reason
@@ -41,13 +41,13 @@ class testDetailView(DetailView):
 
 
 class testCreateView(CreateView):
-    template_name = 'teacher_create.html'
+    template_name = 'teacher/teacher_create.html'
     form_class = TeacherModelForm
     queryset = Teacher.objects.all()
 
 
 class testUpdateView(UpdateView):
-    template_name = 'teacher_create.html'
+    template_name = 'teacher/teacher_create.html'
     form_class = TeacherModelForm
 
     def get_object(self):
@@ -59,11 +59,11 @@ class testUpdateView(UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('dbapp:teacher-list')
+        return reverse('dbapp:teacher-list') 
 
 
 class testDeleteView(DeleteView):
-    template_name = 'teacher_delete.html'
+    template_name = 'teacher/teacher_delete.html'
     
     def get_object(self):
         id_ = self.kwargs.get("id")
