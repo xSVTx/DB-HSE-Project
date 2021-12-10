@@ -36,6 +36,7 @@ STATIC_ROOT = ''
 
 STATICFILES_DIRS = ( os.path.join('static'), )
 
+STATICFILES_DIRS = ( os.path.join('static'), )
 # Application definition
 
 INSTALLED_APPS = [

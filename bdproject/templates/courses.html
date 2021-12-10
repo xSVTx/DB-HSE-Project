@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Hub|Courses</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="{% static 'js/action.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/datatables.css' %}">
+        <script type="text/javascript" charset="utf8" src="{% static 'js/datatables.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <script type="text/javascript" charset="utf8" src="{% static 'js/bootstrap.js' %}"></script>
+    </head>
+
+<body>
+    <nav>
+    <div class="topnav">
+        <a class="button-30" href="home_page.html">Assignments</a>
+        <a class="button-30" href="#news">Courses</a>
+        <img src="{% static 'templates/cap.png' %}" alt="My image" height="100px" weight="100px">
+        <a class="button-30" href="#contact">Tutors</a>
+        <a class="button-30" href="#about">Exams</a>
+    </div>
+</nav>
+    <br/>
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Started</th>
+                <th>Ended</th>
+                <th>Assignments</th>
+                <th>Materials</th>
+                <th>Exam Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+            <tr>
+                <td>Name 2</td>
+                <td>SDate 2</td>
+                <td>EDate 2</td>
+                <td>Assignments 2</td>
+                <td>Materials 2</td>
+                <td>Exam 2</td>
+            </tr>
+             <tr>
+                <td>Name 3</td>
+                <td>SDate 3</td>
+                <td>EDate 3</td>
+                <td>Assignments 3</td>
+                <td>Materials 3</td>
+                <td>Exam 3</td>
+            </tr>
+            <tr>
+                <td>Name 4</td>
+                <td>SDate 4</td>
+                <td>EDate 4</td>
+                <td>Assignments 4</td>
+                <td>Materials 4</td>
+                <td>Exam 4</td>
+            </tr>
+             <tr>
+                <td>Name 5</td>
+                <td>SDate 5</td>
+                <td>EDate 5</td>
+                <td>Assignments 5</td>
+                <td>Materials 5</td>
+                <td>Exam 5</td>
+            </tr>
+            <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+             <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+            <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+             <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+            <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+             <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+            <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+             <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+            <tr>
+                <td>Name 1</td>
+                <td>SDate 1</td>
+                <td>EDate 1</td>
+                <td>Assignments 1</td>
+                <td>Materials 1</td>
+                <td>Exam 1</td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#table_id').DataTable();
+    });
+    </script>
+</body>
+
+</html>
