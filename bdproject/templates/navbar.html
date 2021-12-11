@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Hub|Courses</title>
+    <title>StudHub</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/actions.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -16,13 +13,16 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="center">
-            <form action="courses/">
-                <button class="button-30" role="button">Start your journey</button>
-            </form>
-        </div>
-    </div>
+<nav>
+<div class="topnav">
+    <a class="button-30" href="/teacher">Teachers</a>
+    <a class="button-30" href="/exam">Exams</a>
+    <a class="button-30" href="/courses">Courses</a>
+    <a class="button-30" href="/materials">Materials</a>
+    {% comment %} <img src="{% static 'cap.png' %}" alt="My image" height="100px" weight="100px"> {% endcomment %}
+    <a class="button-30" href="/lecture">Lectures</a>
+    <a class="button-30" href="/assignment">Assignments</a>
+    <a class="button-30" href="/recordings">Recordings</a>
+</div>
+</nav>
 </body>
-
-</html>

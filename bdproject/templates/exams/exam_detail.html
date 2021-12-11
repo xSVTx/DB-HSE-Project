@@ -25,22 +25,23 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>NAME</th>
-            <th>PHNUM</th>
-            <th>Email</th>
-            <th>Exam</th>
+            <th>Date</th>
+            <th>StartTime</th>
+            <th>EndTime</th>
+            <th>Course</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>{{ object.teacher_id }}</td>
-            <td>{{ object.teachercredentials }}</td>
-            <td>{{ object.teacherphonenumber }}</td>
-            <td>{{ object.teacheremail }}</td>
-            <td><a href="/exam/{{ object.exam.exam_id }}">{{ object.exam.examdate }}</a></td>
+            <td>{{ object.exam_id }}</td>
+            <td>{{ object.examdate }}</td>
+            <td>{{ object.examtimestart }}</td>
+            <td>{{ object.examtimeend }}</td>
+            <td><a href="/courses/{{ object.course.course_id }}">{{ object.course.coursename }}</a></td>
         </tr>
     </tbody>
 </table>
+
 <script type="text/javascript">
 $(document).ready(function() {
     table = $('#table_id').DataTable({
@@ -49,6 +50,7 @@ $(document).ready(function() {
         }
     });
 })
+
 
 </script>
 

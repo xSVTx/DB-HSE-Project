@@ -25,22 +25,31 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>NAME</th>
-            <th>PHNUM</th>
-            <th>Email</th>
-            <th>Exam</th>
+            <th>Name</th>
+            <th>Info</th>
+            <th>Format</th>
+            <th>date</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Course</th>
+            <th>Recording</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>{{ object.teacher_id }}</td>
-            <td>{{ object.teachercredentials }}</td>
-            <td>{{ object.teacherphonenumber }}</td>
-            <td>{{ object.teacheremail }}</td>
-            <td><a href="/exam/{{ object.exam.exam_id }}">{{ object.exam.examdate }}</a></td>
+            <td>{{ object.lecture_id }}</td>
+            <td>{{ object.lecturesname }}</td>
+            <td>{{ object.lectureinfo }}</td>
+            <td>{{ object.lectureformat }}</td>
+            <td>{{ object.lecturedate }}</td>
+            <td>{{ object.lecturetimestart }}</td>
+            <td>{{ object.lecturetimeend }}</td>
+            <td><a href="/courses/{{ object.course.course_id }}">{{ object.course.coursename }}</a></td>
+            <td><a href="/recordings/{{ object.recording.recording_id }}">{{ object.recording.recordinginfo }}</a></td>
         </tr>
     </tbody>
 </table>
+
 <script type="text/javascript">
 $(document).ready(function() {
     table = $('#table_id').DataTable({
@@ -49,6 +58,7 @@ $(document).ready(function() {
         }
     });
 })
+
 
 </script>
 

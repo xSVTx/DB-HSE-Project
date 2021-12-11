@@ -1,13 +1,17 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
-        {% load static %}
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Student Hub|Courses</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <script src="{% static 'js/action.js' %}"></script>
+        <script src="{% static 'js/actions.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/datatables.css' %}">
         <script type="text/javascript" charset="utf8" src="{% static 'js/datatables.js' %}"></script>
@@ -16,33 +20,37 @@
     </head>
 
 <body>
-    <nav>
-    <div class="topnav">
-        <a class="button-30" href="home_page.html">Assignments</a>
-        <a class="button-30" href="#news">Courses</a>
-        <img src="{% static 'templates/cap.png' %}" alt="My image" height="100px" weight="100px">
-        <a class="button-30" href="#contact">Tutors</a>
-        <a class="button-30" href="#about">Exams</a>
-    </div>
-    </nav>
+
+    
+    <form action="create/">
+        <button class="button-30" role="button">Create</button>
+    </form>
+
     <br/>
     <table id="table_id" class="display"> 
             <thead>
             <tr>
-                <th>Teach ID</th>
                 <th>Teach Name</th>     
                 <th>Teach email </th>
                 <th>Teach exam</th>
+                <th>Redact</th>
              </tr>
             </thead>
            <tbody>
                <tr>
                {% for t in teacher_list %}
                    {% if  t.title != "None" %}
-                   <TD align="center">{{ t.teacher_id }}</TD>
                    <TD align="center">{{ t.teachercredentials }}</TD>
                    <TD align="left">{{ t.teacheremail }}</TD>
                    <TD align="center">{{ t.exam.examdate }}</TD>
+                   <TD>
+                        <form action="{{ t.teacher_id }}/update">
+                            <button class="button-30" role="button">Redact</button>
+                        </form>
+                        <form action="{{ t.teacher_id }}/delete">
+                            <button class="button-30" role="button">Delete</button>
+                        </form>
+                    </TD>
                    {% endif %}
                </tr>
               {% endfor %}
@@ -50,10 +58,13 @@
      </table>
 
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('#table_id').DataTable();
+    
+        $(document).ready(function() {
+        table = $('#table_id').DataTable();
+
     });
     </script>
 </body>
 
 </html>
+{% endblock %}
