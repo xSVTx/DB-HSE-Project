@@ -25,6 +25,10 @@
             <button class="button-30" role="button">Create</button>
         </form>
         
+        <form action="delete/">
+            <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')">Delete All</button>
+        </form>
+
         <table id="table_id" class="display"> 
             <thead>
                 <tr>
@@ -44,6 +48,9 @@
                     <TD align="center">{{ t.assignmentdeadline }}</TD>
                     <TD align="center">{{ t.assignmentstatus }}</TD>
                     <TD>
+                            <form action="{{ t.assignment_id  }}">
+                                <button class="button-30" role="button">Detail</button>
+                            </form>
                             <form action="{{ t.assignment_id }}/update">
                                 <button class="button-30" role="button">Redact</button>
                             </form>

@@ -11,7 +11,11 @@ from django.views.generic import (
 
 from .forms import *
 from .models import *
+from django.db import connections
 from django.urls import reverse
+
+import psycopg2
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -50,6 +54,27 @@ class coursesDeleteView(DeleteView):
     def get_success_url(self):
         return reverse('dbapp:course-list')
 
+
+class coursesUpdateView(UpdateView):
+    template_name = 'courses/course_create.html'
+    form_class = CourseModelForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("id") 
+        return get_object_or_404(Courses, course_id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dbapp:course-list')
+
+
+def coursesAllDelete(request):
+    Courses.objects.all().delete()
+    return redirect('/courses/')
+
 #----------------------ExamViews----------------------#
 
 class examListView(ListView):
@@ -79,6 +104,28 @@ class examDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('dbapp:exam-list')
+
+
+class examUpdateView(UpdateView):
+    template_name = 'exams/exam_create.html'
+    form_class = ExamModelForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("id") 
+        return get_object_or_404(Exams, exam_id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dbapp:exam-list')
+
+
+def examAllDelete(request):
+    Exams.objects.all().delete()
+    return redirect('/exam/')
+       
 
 #---------------------LectureViews--------------------#
 
@@ -110,6 +157,27 @@ class lectureDeleteView(DeleteView):
     def get_success_url(self):
         return reverse('dbapp:lecture-list')
 
+
+class lectureUpdateView(UpdateView):
+    template_name = 'lectures/lecture_create.html'
+    form_class = LectureModelForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("id") 
+        return get_object_or_404(Lectures, lecture_id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dbapp:lecture-list')
+
+
+def lectureAllDelete(request):
+    Lectures.objects.all().delete()
+    return redirect('/lecture/')
+
 #-------------------AssignmentViews-------------------#
 
 class assignmentListView(ListView):
@@ -139,6 +207,27 @@ class assignmentDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('dbapp:assignment-list')
+
+
+class assignmentUpdateView(UpdateView):
+    template_name = 'assignments/assignment_create.html'
+    form_class = AssignmentModelForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("id") 
+        return get_object_or_404(Assignment, assignment_id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dbapp:assignment-list')
+
+
+def assignmentAllDelete(request):
+    Assignment.objects.all().delete()
+    return redirect('/assignment/')
 
 #---------------------MaterialViews-------------------#
 
@@ -170,6 +259,27 @@ class materialDeleteView(DeleteView):
     def get_success_url(self):
         return reverse('dbapp:material-list')
 
+
+class materialUpdateView(UpdateView):
+    template_name = 'materials/material_create.html'
+    form_class = MaterialModelForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("id") 
+        return get_object_or_404(Materials, material_id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dbapp:material-list') 
+
+
+def materialAllDelete(request):
+    Materials.objects.all().delete()
+    return redirect('/materials/')       
+
 #---------------------MaterialViews-------------------#
 
 class recordingListView(ListView):
@@ -200,6 +310,27 @@ class recordingDeleteView(DeleteView):
     def get_success_url(self):
         return reverse('dbapp:recording-list')
 
+
+class  recordingUpdateView(UpdateView):
+    template_name = 'recordings/recording_create.html'
+    form_class = RecordingModelForm
+
+    def get_object(self):
+        id_ = self.kwargs.get("id") 
+        return get_object_or_404(Recordings,  recording_id=id_)
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dbapp:recording-list') 
+
+
+def recordingAllDelete(request):
+    Recordings.objects.all().delete()
+    return redirect('/recordings/') 
+
 #---------------------TeacherViews--------------------#
 
 class teacherListView(ListView):
@@ -210,7 +341,7 @@ class teacherListView(ListView):
 class teacherDetailView(DetailView):
     template_name = 'teacher/teacher_detail.html'
     def get_object(self):
-        id_ = self.kwargs.get("id") # Had to be 'teacher_id', but doesnt work for some reason
+        id_ = self.kwargs.get("id")
         return get_object_or_404(Teacher, teacher_id=id_)
 
 
@@ -225,7 +356,7 @@ class teacherUpdateView(UpdateView):
     form_class = TeacherModelForm
 
     def get_object(self):
-        id_ = self.kwargs.get("id") # Had to be 'teacher_id', but doesnt work for some reason
+        id_ = self.kwargs.get("id") 
         return get_object_or_404(Teacher, teacher_id=id_)
 
     def form_valid(self, form):
@@ -245,3 +376,8 @@ class teacherDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('dbapp:teacher-list')
+
+ 
+def teacherAllDelete(request):
+    Teacher.objects.all().delete()
+    return redirect('/teacher/')        

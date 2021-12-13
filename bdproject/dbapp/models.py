@@ -30,7 +30,7 @@ class Courses(models.Model):
     course_id = models.IntegerField(primary_key=True)
     coursename = models.CharField(max_length=50)
     coursestartdate = models.DateField()
-    courseenddate = models.DateField(blank=True, null=True)
+    courseenddate = models.DateTimeField(blank=True, null=True)
     assignementsnum = models.IntegerField(blank=True, null=True)
     materialsnum = models.IntegerField(blank=True, null=True)
 
@@ -53,9 +53,9 @@ class Courses(models.Model):
 
 class Exams(models.Model):
     exam_id = models.IntegerField(primary_key=True)
-    examdate = models.DateField()
-    examtimestart = models.DateTimeField()
-    examtimeend = models.DateTimeField()
+    examdate = models.DateTimeField()
+    examtimestart = models.TimeField()
+    examtimeend = models.TimeField()
     course = models.ForeignKey('Courses', on_delete=models.CASCADE)
 
     def get_absolute_url(self):
@@ -71,9 +71,9 @@ class Lectures(models.Model):
     lecturesname = models.TextField(blank=True, null=True)
     lectureinfo = models.TextField(blank=True, null=True)
     lectureformat = models.CharField(max_length=9, blank=True, null=True)
-    lecturedate = models.DateField()
-    lecturetimestart = models.DateTimeField()
-    lecturetimeend = models.DateTimeField()
+    lecturedate = models.DateTimeField()
+    lecturetimestart = models.TimeField()
+    lecturetimeend = models.TimeField()
     course = models.ForeignKey('Courses', on_delete=models.CASCADE)
     recording = models.ForeignKey('Recordings', on_delete=models.CASCADE, blank=True, null=True)
 

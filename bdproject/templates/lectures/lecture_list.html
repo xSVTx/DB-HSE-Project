@@ -25,12 +25,17 @@
             <button class="button-30" role="button">Create</button>
         </form>
         
+        <form action="delete/">
+            <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')">Delete All</button>
+        </form>
+
         <table id="table_id" class="display"> 
             <thead>
                 <tr>
                     <th>Lecture Name</th>  
                     <th>Lecture Format</th>
                     <th>Course Name</th>
+                    <th>Lecture Info</th>
                     <th>Lecture Date</th>
                     <th>Redact</th>
                 </tr>
@@ -42,8 +47,12 @@
                     <TD align="center">{{ t.lecturesname }}</TD>
                     <TD align="center">{{ t.lectureformat }}</TD>
                     <TD align="center">{{ t.lecturedate }}</TD>
+                    <TD align="center"><a href={{ t.lectureinfo }}>link</a></TD>
                     <TD align="center">{{ t.course.coursename }}</TD>
                     <TD>
+                            <form action="{{ t.lecture_id  }}">
+                                <button class="button-30" role="button">Detail</button>
+                            </form>
                             <form action="{{ t.lecture_id }}/update">
                                 <button class="button-30" role="button">Redact</button>
                             </form>
