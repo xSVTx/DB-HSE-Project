@@ -36,7 +36,7 @@
             <tr>
                 <th>Teach Name</th>     
                 <th>Teach email </th>
-                <th>Teach exam</th>
+                <th>Teach phone</th>
                 <th>Redact</th>
              </tr>
             </thead>
@@ -44,9 +44,9 @@
                <tr>
                {% for t in teacher_list %}
                    {% if  t.title != "None" %}
-                   <TD align="center">{{ t.teachercredentials }}</TD>
-                   <TD align="left">{{ t.teacheremail }}</TD>
-                   <TD align="center">{{ t.exam.examdate }}</TD>
+                   <TD align="left">{{ t.teacherfullname }}</TD>
+                   <TD align="left">{{ t.teachermail }}</TD>
+                   <TD align="left">{{ t.teachertel }}</TD>
                    <TD>
                         <div class="redact_buttons">
                             <form action="{{ t.teacher_id  }}">
@@ -56,7 +56,7 @@
                                 <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.teacher_id }}/delete">
-                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
+                                <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
                             </form>
                         </div>
                     </TD>

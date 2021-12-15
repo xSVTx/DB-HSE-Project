@@ -8,7 +8,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Hub|Courses</title>
+    <title>StudHub|Lectures|Detail</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/actions.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -24,13 +24,12 @@
 <table id="table_id" class="display" width='50%'>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Info</th>
-            <th>Format</th>
-            <th>date</th>
-            <th>Start</th>
-            <th>End</th>
+            <th>Lecture ID</th>
+            <th>Lecture Name</th>
+            <th>Lecture Format</th>
+            <th>Lecture Date</th>
+            <th>Lecture Start Time</th>
+            <th>Lecture End Time</th>
             <th>Course</th>
             <th>Recording</th>
         </tr>
@@ -39,7 +38,6 @@
         <tr>
             <td>{{ object.lecture_id }}</td>
             <td>{{ object.lecturesname }}</td>
-            <td>{{ object.lectureinfo }}</td>
             <td>{{ object.lectureformat }}</td>
             <td>{{ object.lecturedate }}</td>
             <td>{{ object.lecturetimestart }}</td>

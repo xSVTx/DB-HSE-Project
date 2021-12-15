@@ -8,7 +8,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Hub|Courses</title>
+    <title>StudHub|Materials|Detail</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/actions.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -24,17 +24,17 @@
 <table id="table_id" class="display" width='50%'>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Info</th>
-            <th>Link</th>
-            <th>course</th>
+            <th>Material ID</th>
+            <th>Material Info</th>
+            <th>Material Link</th>
+            <th>Course</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>{{ object.material_id }}</td>
             <td>{{ object.materialinfo }}</td>
-            <TD align="center"><a href={{ object.materiallink }}>link</a></TD>
+            <TD><a href={{ object.materiallink }}>{{object.materiallink}}</a></TD>
             <td><a href="/courses/{{ object.course.course_id }}">{{ object.course.coursename }}</a></td>
         </tr>
     </tbody>

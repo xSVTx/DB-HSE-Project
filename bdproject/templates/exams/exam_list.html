@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Hub|Courses</title>
+        <title>StudHub|Exams</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <script src="{% static 'js/actions.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -34,6 +34,7 @@
                 <tr>
                     <th>Course Name</th>     
                     <th>Exam Date</th>
+                    <th>Exam Start Time</th>
                     <th>Redact</th>
                 </tr>
                 </thead>
@@ -41,8 +42,9 @@
                 <tr>
                 {% for t in exams_list %}
                     {% if  t.title != "None" %}
-                    <TD align="center">{{ t.course.coursename }}</TD>
-                    <TD align="left">  {{ t.examdate }}</TD>
+                    <TD align="left">{{ t.course.coursename }}</TD>
+                    <TD align="left">{{ t.examdate }}</TD>
+                    <TD align="left">{{ t.examtimestart }}</TD>
                     <TD>
                         <div class="redact_buttons">
                             <form action="{{ t.exam_id  }}">
@@ -52,7 +54,7 @@
                                 <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.exam_id }}/delete">
-                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
+                                <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
                             </form>
                         </div>
                         </TD>

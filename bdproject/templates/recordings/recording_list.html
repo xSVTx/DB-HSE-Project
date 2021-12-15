@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Hub|Exams</title>
+        <title>StudHub|Recordings</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <script src="{% static 'js/actions.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
         <table id="table_id" class="display"> 
             <thead>
                 <tr>
-                    <th>Recording Info</th>  
-                    <th>Recording Date</th>
+                    <th>Lecture Name</th>  
                     <th>Lecture Date</th>
+                    <th>Recording Link</th>
                     <th>Redact</th>
                 </tr>
                 </thead>
@@ -42,19 +42,16 @@
                 <tr>
                 {% for t in recordings_list %}
                     {% if  t.title != "None" %}
-                    <TD align="center">{{ t.recordinginfo }}</TD>
-                    <TD align="center">{{ t.recordingdateofcreation }}</TD>
-                    <TD align="center">{{ t.recording.lecture.lecturedate }}</TD>
+                    <TD align="left">{{ t.lecture.lecturesname }}</TD>
+                    <TD align="left">{{ t.lecture.lecturedate }}</TD>
+                    <TD align="left"><a href="{{t.recordingURL}}">{{ t.recordingURL }}</TD>
                     <TD>
                         <div class="redact_buttons">
-                            <form action="{{ t.recording_id  }}">
-                                <button class="button-30" role="button"><img src="{% static 'info-circle-solid.svg' %}"/></button>
-                            </form>
                             <form action="{{ t.recording_id }}/update">
                                 <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.recording_id }}/delete">
-                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
+                                <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
                             </form>
                         </div>
                     </TD>

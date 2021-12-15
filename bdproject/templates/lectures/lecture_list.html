@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Hub|Exams</title>
+        <title>StudHub|Lectures</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <script src="{% static 'js/actions.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -32,11 +32,11 @@
         <table id="table_id" class="display"> 
             <thead>
                 <tr>
+                    <th>Course Name</th>
                     <th>Lecture Name</th>  
                     <th>Lecture Format</th>
-                    <th>Course Name</th>
-                    <th>Lecture Info</th>
                     <th>Lecture Date</th>
+                    <th>Lecture Start Time</th>
                     <th>Redact</th>
                 </tr>
                 </thead>
@@ -44,11 +44,11 @@
                 <tr>
                 {% for t in lectures_list %}
                     {% if  t.title != "None" %}
-                    <TD align="center">{{ t.lecturesname }}</TD>
-                    <TD align="center">{{ t.lectureformat }}</TD>
-                    <TD align="center">{{ t.lecturedate }}</TD>
-                    <TD align="center"><a href={{ t.lectureinfo }}>link</a></TD>
-                    <TD align="center">{{ t.course.coursename }}</TD>
+                    <TD align="left">{{ t.course.coursename }}</TD>
+                    <TD align="left">{{ t.lecturesname }}</TD>
+                    <TD align="left">{{ t.lectureformat }}</TD>
+                    <TD align="left">{{ t.lecturedate }}</TD>
+                    <TD align="left">{{ t.lecturetimestart }}</TD>
                     <TD>
                         <div class="redact_buttons">
                             <form action="{{ t.lecture_id  }}">
@@ -58,7 +58,7 @@
                                 <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.lecture_id }}/delete">
-                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
+                                <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
                             </form>
                         </div>
                     </TD>

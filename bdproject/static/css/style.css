@@ -132,6 +132,7 @@ body{
 .topnav {
   overflow: hidden;
   height: 100px;
+  margin: 20px 0 0 0;
   text-align: center;
 }
 
