@@ -14,7 +14,7 @@ urlpatterns = [
     path('courses/<int:id>/', coursesDetailView.as_view(), name='course-detail'),
     path('courses/create/', coursesCreateView.as_view(), name='course-create'),
     path('courses/<int:id>/update/', coursesUpdateView.as_view(), name='course-update'),
-    path('courses/<int:id>/delete/', coursesDeleteView.as_view(), name='course-delete'),
+    path('courses/<int:id>/delete/', coursesDeleteView, name='course-delete'),
     path('courses/delete/', coursesAllDelete),
 
     path('exam/', examListView.as_view(), name='exam-list'),

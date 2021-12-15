@@ -17,6 +17,8 @@
         <script type="text/javascript" charset="utf8" src="{% static 'js/datatables.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <script type="text/javascript" charset="utf8" src="{% static 'js/bootstrap.js' %}"></script>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     </head>
 
     <body>
@@ -47,16 +49,17 @@
                     <TD align="center">{{ t.assignmenttype }}</TD>
                     <TD align="center">{{ t.assignmentdeadline }}</TD>
                     <TD align="center">{{ t.assignmentstatus }}</TD>
-                    <TD>
+                    <TD align="center">
                         <div class="redact_buttons">
                             <form action="{{ t.assignment_id  }}">
-                                <button class="button-30" role="button"><img src="{% static 'info-circle-solid.svg' %}"/></button>
+                                <button class="button-30" role="button"><i class="fas fa-info-circle"></i></button>
                             </form>
                             <form action="{{ t.assignment_id }}/update">
-                                <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
+                                <button class="button-30" role="button"><i class="fas fa-edit"></i></button>
                             </form>
                             <form action="{{ t.assignment_id }}/delete">
-                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
+                                <button class="button-30" role="button"><i
+                                    class="fas fa-trash-alt"></i></button>
                             </form>
                         </div>
                     </TD>

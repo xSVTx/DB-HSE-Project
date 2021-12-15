@@ -45,7 +45,7 @@ class coursesDetailView(DetailView):
 
 
 class coursesDeleteView(DeleteView):
-    template_name = 'courses/course_delete.html'
+    template_name = 'courses/course_list.html'
     
     def get_object(self):
         id_ = self.kwargs.get("id")
@@ -53,8 +53,6 @@ class coursesDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('dbapp:course-list')
-
-
 class coursesUpdateView(UpdateView):
     template_name = 'courses/course_create.html'
     form_class = CourseModelForm

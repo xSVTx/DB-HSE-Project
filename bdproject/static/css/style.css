@@ -1,13 +1,54 @@
 body{
   font-family: "Fira code";
 }
-
 .action_buttons{
   display: inline-flex;
 }
+.action_buttons button{  
+  width: 150px;
+}
+.action_buttons .create{
+   color: #2dc653;
+}
+.button-30 .create:focus {
+  box-shadow: #25a244 0 0 0 1.5px inset, #208b3a 0 2px 4px, #208b3a 0 7px 13px -3px, #25a244 0 -3px 0 inset;
+}
+
+.action_buttons .create:hover{
+  box-shadow: #208b3a 0 2px 4px,#208b3a 0 7px 13px -3px,#25a244 0 -3px 0 inset;
+  transform: translateY(-2px);
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: #2dc653;
+}
+
+.button-30 .create:active {
+  box-shadow: #25a244 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.action_buttons .delete-all{
+   color: #e30613;
+}
+.button-30 .delete-all:focus {
+  box-shadow: #bd120f 0 0 0 1.5px inset, #9f040e 0 2px 4px, #9f040e 0 7px 13px -3px, #bd120f 0 -3px 0 inset;
+}
+
+.action_buttons .delete-all:hover{
+  box-shadow: #9f040e 0 2px 4px,#9f040e 0 7px 13px -3px,#bd120f 0 -3px 0 inset;
+  transform: translateY(-2px);
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: #e30613;
+}
+
+.button-30 .delete-all:active {
+  box-shadow: #bd120f 0 3px 7px inset;
+  transform: translateY(2px);
+}
 
 /* CSS */
-.button-30 {
+.button-30,
+.paginate_button {
   align-items: center;
   appearance: none;
   background-color: #FCFCFD;
@@ -15,7 +56,7 @@ body{
   border-width: 0;
   box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
   box-sizing: border-box;
-  color: #36395A;
+  color: #495057;
   cursor: pointer;
   display: inline-flex;
   font-family: "JetBrains Mono",monospace;
@@ -37,12 +78,13 @@ body{
   will-change: box-shadow,transform;
   font-size: 18px;
   margin: 0 10px 20px 42px;
-  width: 150px;
 }
-
+.paginate_button,
+.current{
+  margin: 10px 10px !important;  
+}
 .redact_buttons{
   display: inline-flex;
-  position: center;
 }
 
 .redact_buttons button{
@@ -52,19 +94,22 @@ body{
   display: inline-flex;
 }
 
-
-.button-30:focus {
+.button-30:focus
+.paginate_button:focus {
   box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
-.button-30:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+.button-30:hover,
+.paginate_button:hover {
+  box-shadow: #343a40 0 4px 8px, #343a40 0 7px 13px -3px, #495057 0 -3px 0 inset;
   transform: translateY(-2px);
-  color: #303351;
+  color: #FFFFFF;
+  background-color: #6c757d;
   text-decoration: none;
 }
 
-.button-30:active {
+.button-30:active,
+.paginate_button:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
@@ -136,20 +181,18 @@ body{
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.topnav a,
+.paginate_button a {
   float: center;
   width: 150px;
   text-align: center;
-  margin: 0 10px;
+  margin: 20px 10px;
   padding: 20px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
 /* Change the color of links on hover */
-.topnav a:hover {
-  color: #303351;
-}
 
 /* Add a color to the active/current link */
 .topnav a.active {
