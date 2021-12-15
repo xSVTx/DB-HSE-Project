@@ -48,15 +48,17 @@
                    <TD align="left">{{ t.teacheremail }}</TD>
                    <TD align="center">{{ t.exam.examdate }}</TD>
                    <TD>
-                        <form action="{{ t.teacher_id }}">
-                            <button class="button-30" role="button">Detail</button>
-                        </form>
-                        <form action="{{ t.teacher_id }}/update">
-                            <button class="button-30" role="button">Redact</button>
-                        </form>
-                        <form action="{{ t.teacher_id }}/delete">
-                            <button class="button-30" role="button">Delete</button>
-                        </form>
+                        <div class="redact_buttons">
+                            <form action="{{ t.teacher_id  }}">
+                                <button class="button-30" role="button"><img src="{% static 'info-circle-solid.svg' %}"/></button>
+                            </form>
+                            <form action="{{ t.teacher_id }}/update">
+                                <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
+                            </form>
+                            <form action="{{ t.teacher_id }}/delete">
+                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
+                            </form>
+                        </div>
                     </TD>
                    {% endif %}
                </tr>

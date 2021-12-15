@@ -31,7 +31,7 @@ class Courses(models.Model):
     coursename = models.CharField(max_length=50)
     coursestartdate = models.DateField()
     courseenddate = models.DateTimeField(blank=True, null=True)
-    assignementsnum = models.IntegerField(blank=True, null=True)
+    assignmentsnum = models.IntegerField(blank=True, null=True)
     materialsnum = models.IntegerField(blank=True, null=True)
 
     def get_absolute_url(self):

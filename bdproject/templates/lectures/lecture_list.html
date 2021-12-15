@@ -50,15 +50,17 @@
                     <TD align="center"><a href={{ t.lectureinfo }}>link</a></TD>
                     <TD align="center">{{ t.course.coursename }}</TD>
                     <TD>
+                        <div class="redact_buttons">
                             <form action="{{ t.lecture_id  }}">
-                                <button class="button-30" role="button">Detail</button>
+                                <button class="button-30" role="button"><img src="{% static 'info-circle-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.lecture_id }}/update">
-                                <button class="button-30" role="button">Redact</button>
+                                <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.lecture_id }}/delete">
-                                <button class="button-30" role="button">Delete</button>
+                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
                             </form>
+                        </div>
                     </TD>
                     {% endif %}
                 </tr>

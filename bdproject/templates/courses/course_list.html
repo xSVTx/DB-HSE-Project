@@ -17,18 +17,19 @@
         <script type="text/javascript" charset="utf8" src="{% static 'js/datatables.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <script type="text/javascript" charset="utf8" src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="https://use.fontawesome.com/f4ceb61a4f.js"></script>
     </head>
 
     <body>
         <div class="action_buttons">
-        <form action="create/">
-            <button class="button-30" role="button">Create</button>
-        </form>
-        
-        <form action="delete/">
-            <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')">Delete All</button>
-        </form>
-</div>
+            <form action="create/">
+                <button class="button-30" role="button">Create</button>
+            </form>
+
+            <form action="delete/">
+                <button class="button-30" role="button" onclick="return confirm('Are you sure you want to delete this?')">Delete All</button>
+            </form>
+        </div>
         <table id="table_id" class="display"> 
             <thead>
                 <tr>
@@ -46,15 +47,17 @@
                     <TD align="left">  {{ t.coursestartdate }}</TD>
                     <TD align="center">{{ t.courseenddate }}</TD>
                     <TD>
+                        <div class="redact_buttons">
                             <form action="{{ t.course_id  }}">
-                                <button class="button-30" role="button">Detail</button>
+                                <button class="button-30" role="button"><img src="{% static 'info-circle-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.course_id }}/update">
-                                <button class="button-30" role="button">Redact</button>
+                                <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.course_id }}/delete">
-                                <button class="button-30" role="button">Delete</button>
+                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
                             </form>
+                        </div>
                         </TD>
                     {% endif %}
                 </tr>

@@ -48,15 +48,17 @@
                     <TD align="center">{{ t.assignmentdeadline }}</TD>
                     <TD align="center">{{ t.assignmentstatus }}</TD>
                     <TD>
+                        <div class="redact_buttons">
                             <form action="{{ t.assignment_id  }}">
-                                <button class="button-30" role="button">Detail</button>
+                                <button class="button-30" role="button"><img src="{% static 'info-circle-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.assignment_id }}/update">
-                                <button class="button-30" role="button">Redact</button>
+                                <button class="button-30" role="button"><img src="{% static 'edit-solid.svg' %}"/></button>
                             </form>
                             <form action="{{ t.assignment_id }}/delete">
-                                <button class="button-30" role="button">Delete</button>
+                                <button class="button-30" role="button"><img src="{% static 'trash-alt-solid.svg' %}"/></i></button>
                             </form>
+                        </div>
                     </TD>
                     {% endif %}
                 </tr>
