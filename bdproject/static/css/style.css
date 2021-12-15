@@ -2,6 +2,9 @@ body{
   font-family: "Fira code";
 }
 
+.action_buttons{
+  display: inline;
+}
 /* CSS */
 .button-30 {
   align-items: center;
@@ -33,6 +36,7 @@ body{
   will-change: box-shadow,transform;
   font-size: 18px;
   margin: 0 auto;
+  width: 150px;
 }
 
 .button-30:focus {
@@ -120,7 +124,7 @@ body{
 /* Style the links inside the navigation bar */
 .topnav a {
   float: center;
-  width: 100px;
+  width: 150px;
   text-align: center;
   margin: 0 10px;
   padding: 20px 16px;
@@ -130,7 +134,7 @@ body{
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  color: color: #303351;
+  color: #303351;
 }
 
 /* Add a color to the active/current link */

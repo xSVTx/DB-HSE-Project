@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'bdproject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 con = psycopg2.connect(user="postgres",
-                       password="BN59-01012A") # Change password here
+                       password="password") # Change password here
 
 con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
@@ -102,7 +102,7 @@ if not cur.fetchone()[0]:
         host="localhost",
         database="studHubCreation",
         user="postgres",
-        password="BN59-01012A"
+        password="password"
     ) 
 
     cur = con.cursor()
@@ -116,7 +116,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'studhub',
        'USER': 'postgres',
-       'PASSWORD': 'BN59-01012A',
+       'PASSWORD': 'password',
        'HOST': 'localhost',
        'PORT': '5432',
    }
