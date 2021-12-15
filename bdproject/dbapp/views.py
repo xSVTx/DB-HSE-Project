@@ -53,6 +53,14 @@ class coursesDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('dbapp:course-list')
+
+
+def deleteCourse(request, id):
+    temp = get_object_or_404(Courses, course_id=id)
+    temp.delete()
+    return redirect('/courses/')
+
+
 class coursesUpdateView(UpdateView):
     template_name = 'courses/course_create.html'
     form_class = CourseModelForm
@@ -93,15 +101,10 @@ class examDetailView(DetailView):
         return get_object_or_404(Exams, exam_id=id_)
 
 
-class examDeleteView(DeleteView):
-    template_name = 'exams/exam_delete.html'
-    
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Exams, exam_id=id_)
-
-    def get_success_url(self):
-        return reverse('dbapp:exam-list')
+def deleteExam(request, id):
+    temp = get_object_or_404(Exams, exam_id=id)
+    temp.delete()
+    return redirect('/exam/')
 
 
 class examUpdateView(UpdateView):
@@ -145,15 +148,10 @@ class lectureCreateView(CreateView):
     queryset = Lectures.objects.all()
 
 
-class lectureDeleteView(DeleteView):
-    template_name = 'lectures/lecture_delete.html'
-    
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Lectures, lecture_id=id_)
-
-    def get_success_url(self):
-        return reverse('dbapp:lecture-list')
+def deleteLecture(request, id):
+    temp = get_object_or_404(Lectures, lecture_id=id)
+    temp.delete()
+    return redirect('/lecture/')
 
 
 class lectureUpdateView(UpdateView):
@@ -196,15 +194,10 @@ class assignmentCreateView(CreateView):
     queryset = Assignment.objects.all()
 
 
-class assignmentDeleteView(DeleteView):
-    template_name = 'assignments/assignment_delete.html'
-    
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Assignment, assignment_id=id_)
-
-    def get_success_url(self):
-        return reverse('dbapp:assignment-list')
+def deleteAssignment(request, id):
+    temp = get_object_or_404(Assignment, assignment_id=id)
+    temp.delete()
+    return redirect('/assignment/')
 
 
 class assignmentUpdateView(UpdateView):
@@ -247,15 +240,10 @@ class materialCreateView(CreateView):
     queryset = Materials.objects.all()
 
 
-class materialDeleteView(DeleteView):
-    template_name = 'materials/material_delete.html'
-    
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Materials, material_id=id_)
-
-    def get_success_url(self):
-        return reverse('dbapp:material-list')
+def deleteMaterials(request, id):
+    temp = get_object_or_404(Materials, material_id=id)
+    temp.delete()
+    return redirect('/materials/')
 
 
 class materialUpdateView(UpdateView):
@@ -297,16 +285,14 @@ class recordingCreateView(CreateView):
     form_class = RecordingModelForm
     queryset = Recordings.objects.all()
 
-
-class recordingDeleteView(DeleteView):
-    template_name = 'recordings/recording_delete.html'
-    
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Recordings, recording_id=id_)
-
     def get_success_url(self):
         return reverse('dbapp:recording-list')
+
+
+def deleteRecording(request, id):
+    temp = get_object_or_404(Recordings, recording_id=id)
+    temp.delete()
+    return redirect('/recordings/')
 
 
 class  recordingUpdateView(UpdateView):
@@ -365,17 +351,12 @@ class teacherUpdateView(UpdateView):
         return reverse('dbapp:teacher-list') 
 
 
-class teacherDeleteView(DeleteView):
-    template_name = 'teacher/teacher_delete.html'
-    
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Teacher, teacher_id=id_)
+def deleteTeacher(request, id):
+    temp = get_object_or_404(Teacher, teacher_id=id)
+    temp.delete()
+    return redirect('/teacher/')
 
-    def get_success_url(self):
-        return reverse('dbapp:teacher-list')
 
- 
 def teacherAllDelete(request):
     Teacher.objects.all().delete()
     return redirect('/teacher/')        

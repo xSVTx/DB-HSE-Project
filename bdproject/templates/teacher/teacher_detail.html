@@ -24,20 +24,28 @@
 <table id="table_id" class="display" width='50%'>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>PHNUM</th>
-            <th>Email</th>
-            <th>Exam</th>
+            <th>Teacher ID</th>
+            <th>Teacher Full Name</th>
+            <th>Teacher Phone</th>
+            <th>Teacher Email</th>
+            <th>Teacher Exam</th>
+            <th>Teacher Courses</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>{{ object.teacher_id }}</td>
-            <td>{{ object.teachercredentials }}</td>
-            <td>{{ object.teacherphonenumber }}</td>
-            <td>{{ object.teacheremail }}</td>
+            <td>{{ object.teacherfullname }}</td>
+            <td>{{ object.teachertel }}</td>
+            <td>{{ object.teachermail }}</td>
             <td><a href="/exam/{{ object.exam.exam_id }}">{{ object.exam.examdate }}</a></td>
+            <td>
+                {% for t in object.courses.all %}
+                    {% if  t.title != "None" %}
+                        <a href="/courses/{{ t.course_id }}">{{ t.coursename }}</a>
+                    {% endif %}
+                {% endfor %}
+            </td>
         </tr>
     </tbody>
 </table>

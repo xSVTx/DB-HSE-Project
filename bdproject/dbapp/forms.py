@@ -9,9 +9,9 @@ class TeacherModelForm(forms.ModelForm):
         model = Teacher
         fields =[
             'teacher_id',
-            'teachercredentials',
-            'teacherphonenumber',
-            'teacheremail',
+            'teacherfullname',
+            'teachertel',
+            'teachermail',
             'exam',
             'courses'
         ]
@@ -68,7 +68,7 @@ class LectureModelForm(forms.ModelForm):
         fields =[
             'lecture_id',
             'lecturesname',
-            'lectureinfo',
+            'lectureformat',
             'lecturedate',
             'lecturetimestart',
             'lecturetimeend',
@@ -82,7 +82,6 @@ class AssignmentModelForm(forms.ModelForm):
         model = Assignment
         fields =[
             'assignment_id',
-            'assignmenttype',
             'assignmentinfo',
             'assignmentdeadline',
             'assignmentstatus',
@@ -107,8 +106,6 @@ class RecordingModelForm(forms.ModelForm):
         model = Recordings
         fields =[
             'recording_id',
-            'recordingdateofcreation',
-            'recordingtype',
-            'recordinginfo',
+            'recordingURL',
             'lecture'
         ]        

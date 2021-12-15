@@ -11,18 +11,24 @@ from django.urls import reverse
 
 
 class Assignment(models.Model):
+    ASSIGNMENT_STATUS = [
+        ('N', "Not started"),
+        ('I', "In process"),
+        ('D', "Done")
+    ]
     assignment_id = models.IntegerField(primary_key=True)
-    assignmenttype = models.CharField(max_length=17, blank=True, null=True)
     assignmentinfo = models.TextField(blank=True, null=True)
     assignmentdeadline = models.DateField(blank=True, null=True)
-    assignmentstatus = models.CharField(max_length=18, blank=True, null=True)
+    assignmentstatus = models.CharField(choices=ASSIGNMENT_STATUS, max_length=18, blank=True, null=True)
     lectures = ManyToManyField('Lectures')
 
     def get_absolute_url(self):
         return reverse("dbapp:assignment-detail", kwargs={"id": self.assignment_id})
 
     class Meta:
-
+        indexes = [
+            models.Index(fields=['assignmentinfo'])
+        ]
         db_table = 'assignment'
 
 
@@ -38,7 +44,9 @@ class Courses(models.Model):
         return reverse("dbapp:course-detail", kwargs={"id": self.course_id})
 
     class Meta:
-
+        indexes = [
+            models.Index(fields=['coursename'])
+        ]
         db_table = 'courses'
 
 
@@ -62,15 +70,20 @@ class Exams(models.Model):
         return reverse("dbapp:exam-detail", kwargs={"id": self.exam_id})
 
     class Meta:
-
+        indexes = [
+            models.Index(fields=['examdate'])
+        ]
         db_table = 'exams'
 
 
 class Lectures(models.Model):
+    LECTURE_FORMAT = [
+        ('ON', 'Online'),
+        ('OFF', 'Offline')
+    ]
     lecture_id = models.IntegerField(primary_key=True)
     lecturesname = models.TextField(blank=True, null=True)
-    lectureinfo = models.TextField(blank=True, null=True)
-    lectureformat = models.CharField(max_length=9, blank=True, null=True)
+    lectureformat = models.CharField(choices=LECTURE_FORMAT, max_length=9, blank=True, null=True)
     lecturedate = models.DateTimeField()
     lecturetimestart = models.TimeField()
     lecturetimeend = models.TimeField()
@@ -81,7 +94,9 @@ class Lectures(models.Model):
         return reverse("dbapp:lecture-detail", kwargs={"id": self.lecture_id})
 
     class Meta:
-
+        indexes = [
+            models.Index(fields=['lecturesname'])
+        ]
         db_table = 'lectures'
 
 
@@ -98,21 +113,20 @@ class Materials(models.Model):
     material_id = models.IntegerField(primary_key=True)
     materialinfo = models.TextField(blank=True, null=True)
     materiallink = models.TextField(blank=True, null=True)
-    materialinsides = models.TextField(blank=True, null=True)
-    course = models.ForeignKey('Courses', on_delete=models.CASCADE)
+    course = models.ForeignKey('Courses', on_delete=models.CASCADE, blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse("dbapp:material-detail", kwargs={"id": self.material_id})
 
     class Meta:
-
+        indexes = [
+            models.Index(fields=['materialinfo'])
+        ]
         db_table = 'materials'
 
 class Recordings(models.Model):
     recording_id = models.IntegerField(primary_key=True)
-    recordingdateofcreation = models.DateTimeField()
-    recordingtype = models.CharField(max_length=9, blank=True, null=True)
-    recordinginfo = models.TextField(blank=True, null=True)
+    recordingURL = models.TextField(blank=True, null=True)
     lecture = models.ForeignKey('Lectures', on_delete=models.CASCADE)
 
     def get_absolute_url(self):
@@ -124,9 +138,9 @@ class Recordings(models.Model):
 
 class Teacher(models.Model):
     teacher_id = models.IntegerField(primary_key=True)
-    teachercredentials = models.TextField(blank=True, null=True)
-    teacherphonenumber = models.TextField(blank=True, null=True)
-    teacheremail = models.TextField(blank=True, null=True)
+    teacherfullname = models.TextField(blank=True, null=True)
+    teachertel = models.TextField(blank=True, null=True)
+    teachermail = models.EmailField(max_length = 254, blank=True, null=True)
     exam = models.ForeignKey('Exams', on_delete=models.CASCADE, blank=True, null=True)
     courses = ManyToManyField('Courses')
 
@@ -134,6 +148,8 @@ class Teacher(models.Model):
             return reverse("dbapp:teacher-detail", kwargs={"id": self.teacher_id})
 
     class Meta:
-
+        indexes = [
+            models.Index(fields=['teacherfullname'])
+        ]
         db_table = 'teacher'
 
