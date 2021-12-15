@@ -20,7 +20,10 @@ class Assignment(models.Model):
     assignmentinfo = models.TextField(blank=True, null=True)
     assignmentdeadline = models.DateField(blank=True, null=True)
     assignmentstatus = models.CharField(choices=ASSIGNMENT_STATUS, max_length=18, blank=True, null=True)
-    lectures = ManyToManyField('Lectures')
+    lectures = ManyToManyField('Lectures', blank=True, null=True)
+
+    def __str__(self):
+        return self.assignmentinfo
 
     def get_absolute_url(self):
         return reverse("dbapp:assignment-detail", kwargs={"id": self.assignment_id})
@@ -37,11 +40,13 @@ class Courses(models.Model):
     coursename = models.CharField(max_length=50)
     coursestartdate = models.DateField()
     courseenddate = models.DateTimeField(blank=True, null=True)
-    assignmentsnum = models.IntegerField(blank=True, null=True)
     materialsnum = models.IntegerField(blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse("dbapp:course-detail", kwargs={"id": self.course_id})
+
+    def __str__(self):
+        return self.coursename
 
     class Meta:
         indexes = [
@@ -69,6 +74,10 @@ class Exams(models.Model):
     def get_absolute_url(self):
         return reverse("dbapp:exam-detail", kwargs={"id": self.exam_id})
 
+    def __str__(self):
+        temp = self.course.coursename + ' ' +  str(self.examdate)[:10]
+        return temp
+
     class Meta:
         indexes = [
             models.Index(fields=['examdate'])
@@ -89,6 +98,9 @@ class Lectures(models.Model):
     lecturetimeend = models.TimeField()
     course = models.ForeignKey('Courses', on_delete=models.CASCADE)
     recording = models.ForeignKey('Recordings', on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.lecturesname
 
     def get_absolute_url(self):
         return reverse("dbapp:lecture-detail", kwargs={"id": self.lecture_id})
@@ -115,9 +127,11 @@ class Materials(models.Model):
     materiallink = models.TextField(blank=True, null=True)
     course = models.ForeignKey('Courses', on_delete=models.CASCADE, blank=True, null=True)
 
+    def __str__(self):
+        return self.materialinfo
+
     def get_absolute_url(self):
         return reverse("dbapp:material-detail", kwargs={"id": self.material_id})
-
     
     def save(self, *args, **kwargs):
         
@@ -182,6 +196,9 @@ class Recordings(models.Model):
     recordingURL = models.TextField(blank=True, null=True)
     lecture = models.ForeignKey('Lectures', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.lecture.lecturesname
+
     def get_absolute_url(self):
             return reverse("dbapp:recording-detail", kwargs={"id": self.recording_id})
 
@@ -196,6 +213,9 @@ class Teacher(models.Model):
     teachermail = models.EmailField(max_length = 254, blank=True, null=True)
     exam = models.ForeignKey('Exams', on_delete=models.CASCADE, blank=True, null=True)
     courses = ManyToManyField('Courses')
+
+    def __str__(self):
+        return self.teacherfullname
 
     def get_absolute_url(self):
             return reverse("dbapp:teacher-detail", kwargs={"id": self.teacher_id})

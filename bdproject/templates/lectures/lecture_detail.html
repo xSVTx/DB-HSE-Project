@@ -43,7 +43,7 @@
             <td>{{ object.lecturetimestart }}</td>
             <td>{{ object.lecturetimeend }}</td>
             <td><a href="/courses/{{ object.course.course_id }}">{{ object.course.coursename }}</a></td>
-            <td><a href="/recordings/{{ object.recording.recording_id }}">{{ object.recording.recordinginfo }}</a></td>
+            <td><a href="{{object.recording.recordingURL}}">Link to the Recording</a></td>
         </tr>
     </tbody>
 </table>
