@@ -360,3 +360,14 @@ def deleteTeacher(request, id):
 def teacherAllDelete(request):
     Teacher.objects.all().delete()
     return redirect('/teacher/')        
+
+
+def DeleteAll(request):
+    teacherAllDelete(request)
+    coursesAllDelete(request)
+    assignmentAllDelete(request)
+    recordingAllDelete(request)
+    materialAllDelete(request)
+    lectureAllDelete(request)
+    examAllDelete(request)
+    return redirect('/courses/')

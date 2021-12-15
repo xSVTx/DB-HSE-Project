@@ -52,4 +52,5 @@ urlpatterns = [
     path('recordings/<int:id>/delete/', deleteRecording),
     path('recordings/delete/', recordingAllDelete),
 
+    path('delete_all', DeleteAll)
 ]

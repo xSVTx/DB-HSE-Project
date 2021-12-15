@@ -118,6 +118,59 @@ class Materials(models.Model):
     def get_absolute_url(self):
         return reverse("dbapp:material-detail", kwargs={"id": self.material_id})
 
+    
+    def save(self, *args, **kwargs):
+        
+        print(self._state.adding)
+        if self._state.adding is True:
+            check = []
+            print(self.material_id)
+            tempCourse = Courses.objects.get(course_id=self.course.course_id)
+            if tempCourse not in check:
+                check.append(tempCourse)
+                if tempCourse.materialsnum is None:
+                    print('Were in here')
+                    tempCourse.materialsnum = 1
+                else:
+                    print('Were not there')
+                    tempCourse.materialsnum += 1
+                tempCourse.save()
+        else:
+            tempMat = Materials.objects.get(material_id=self.material_id)
+            tempCoursePre = Courses.objects.get(course_id=tempMat.course.course_id)
+            tempCoursePost = Courses.objects.get(course_id=self.course.course_id)
+            if tempCoursePre != tempCoursePost:
+                tempCoursePre.materialsnum -= 1
+                tempCoursePre.save()
+                if tempCoursePost.materialsnum is None:
+                    print('Were in here')
+                    tempCoursePost.materialsnum = 1
+                else:
+                    print('Were not there')
+                    tempCoursePost.materialsnum += 1
+                tempCoursePost.save()
+
+
+        super(Materials, self).save(*args, **kwargs)
+
+
+    def delete(self, *args, **kwargs):
+
+        tempAss = Materials.objects.get(material_id=self.material_id)
+        check = []
+        print(self.material_id)
+        print(tempAss.course)
+        tempCourse = Courses.objects.get(course_id=tempAss.course.course_id)
+        if tempCourse not in check:
+            check.append(tempCourse)
+            if tempCourse.materialsnum is not None:
+                print('Were in here')
+                tempCourse.materialsnum -= 1
+            tempCourse.save()
+
+        return super(Materials, self).delete()
+
+
     class Meta:
         indexes = [
             models.Index(fields=['materialinfo'])
