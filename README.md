@@ -10,6 +10,7 @@ $ python manage.py makemigrations
 
 $ python manage.py migrate
 ```
+There might be a psycopg error message. To fix it, change settings.py. Instead of password="password", write password="***", where *** is your postgres server password.
 If there was no failure messages, run:
 ```
 $ python manage.py runserver
