@@ -3,8 +3,11 @@ In order to make this thing work, you have to use postgresql server called studh
 are listed in requirements.txt.
 
 To make sure that it works properly, run:
+
 $ cd bdproject
+
 $ python manage.py makemigrations
+
 $ python manage.py migrate
 
 If there was no failure messages, run:
