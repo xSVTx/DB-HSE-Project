@@ -1,6 +1,6 @@
 body,
 #table_id_wrapper{
-  font-family: "Fira code";
+  font-family: "Helvetica";
 }
 .action_buttons{
   display: inline-flex;
@@ -65,7 +65,7 @@ form input[type="submit"]{
   color: #495057;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Fira Code";
+  font-family: "Helvetica";
   font-weight: 600;
   height: 48px;
   justify-content: center;
@@ -213,7 +213,7 @@ p{
 
 form label{
   width: 200px;
-  font-family: 'Fira Code';
+  font-family: "Helvetica";
   height: 48px;
 }
 form input,
