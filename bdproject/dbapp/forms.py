@@ -22,10 +22,6 @@ class TeacherModelForm(forms.ModelForm):
             'teacheremail': 'mail',
             'courses': 'cour'
         }
-        widgets ={
-            'teacher_id': widgets.Textarea(attrs={'cols': 20, 'rows': 1}),
-        }
-
 
 class CourseModelForm(forms.ModelForm):
     class Meta:
