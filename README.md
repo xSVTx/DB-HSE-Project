@@ -17,6 +17,8 @@ $ python manage.py runserver
 And you're good to go.
 
 
+
+
 The creation of studhubcreation:
 ```
 CREATE DATABASE studHubCreation;
