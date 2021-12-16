@@ -1,4 +1,5 @@
-body{
+body,
+#table_id_wrapper{
   font-family: "Fira code";
 }
 .action_buttons{
@@ -64,7 +65,8 @@ form input[type="submit"]{
   color: #495057;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
+  font-family: "Fira Code";
+  font-weight: 600;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -81,7 +83,7 @@ form input[type="submit"]{
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow,transform;
-  font-size: 18px;
+  font-size: 15px;
   margin: 0 10px 20px 42px;
 }
 .paginate_button,
@@ -205,25 +207,19 @@ form input[type="submit"]{
 .topnav a.active {
   color: #9A9CAC;
 }
+p{
+  transform: translate(3%, 0);
+}
 
 form label{
   width: 200px;
   font-family: 'Fira Code';
   height: 48px;
 }
-#id_courseenddate,
-#id_coursestartdate,
-#id_coursename,
-#id_course_id,
-#id_material_id,
-#id_materialinfo,
-#id_materiallink,
-#id_course{
-  
-}
 form input,
 form textarea,
-form select{
+form select,
+#table_id_filter input{
   height: 48px;
   border: 1px solid #333;
   border-radius: 4px;
