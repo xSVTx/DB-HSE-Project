@@ -3,20 +3,22 @@ In order to make this thing work, you have to use postgresql server called studh
 are listed in requirements.txt.
 
 To make sure that it works properly, run:
-
+```
 $ cd bdproject
 
 $ python manage.py makemigrations
 
 $ python manage.py migrate
-
+```
 If there was no failure messages, run:
+```
 $ python manage.py runserver
-
+```
 And you're good to go.
 
 
 The creation of studhubcreation:
+
 CREATE DATABASE studHubCreation;
 
 Open up the query tool in studHubCreation and paste. Make sure that you have the proper password instead of '***':
