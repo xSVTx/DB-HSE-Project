@@ -18,11 +18,11 @@ And you're good to go.
 
 
 The creation of studhubcreation:
-
+```
 CREATE DATABASE studHubCreation;
-
+```
 Open up the query tool in studHubCreation and paste. Make sure that you have the proper password instead of '***':
-
+```
 -- FUNCTION: public.studhubstart()
 
 -- DROP FUNCTION public.studhubstart();
@@ -50,3 +50,4 @@ ALTER FUNCTION public.studhubstart()
     
 create extension dblink;
 select studhubstart();
+```
